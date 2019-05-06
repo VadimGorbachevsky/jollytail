@@ -1,0 +1,82 @@
+<div class="Catalog" style="width: 100%; display: table;">
+  <div style="display: table-row;">
+
+    <div style="display: table-cell; width: 330px;">
+      <div style="display: table; width: 330px;">
+        <div style="display: table-row;">
+        <div style="width: 10px; display: table-cell;"> </div>
+        <div style="width: 300px; display: table-cell; border: 1px solid Purple;">
+          <%= render partial: "shared/tree" %>
+        </div>
+        <div style="width: 20px; display: table-cell;"> </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: table-cell;">
+      <h2 style="margin-bottom: 0px;"><% if @category.parent_id %>
+
+              <% if Category.find(@category.parent_id).parent_id %>
+                  <span id="first_cat_name" style="color: Blue; text-decoration: underline;"> <%= link_to Category.find(Category.find(@category.parent_id).parent_id).name, category_path(Category.find(Category.find(@category.parent_id).parent_id)) %> </span>
+                  <span style="color: Purple;"> / </span>
+                  <span id="prev_cat_name" style="color: Blue; text-decoration: underline;"> <%= link_to Category.find(@category.parent_id).name, category_path(Category.find(@category.parent_id)) %> </span>
+                  <span style="color: Purple;"> / </span>
+                  <span id="current_cat_name" style="color: Blue;"> <%= @category.name %> </span>
+              <% else %>
+                  <span id="prev_cat_name" style="color: Blue; text-decoration: underline;"> <%= link_to Category.find(@category.parent_id).name, category_path(Category.find(@category.parent_id)) %> </span>
+                  <span style="color: Purple;"> / </span>
+                  <span id="current_cat_name" style="color: Blue;"> <%= @category.name %> </span>
+              <% end %>
+
+          <% else %>
+            <span id="current_cat_name" style="color: Blue;"><%= @category.name %></span>
+          <% end %>
+      </h2>
+      <hr style="color: Purple;">
+      <div class="product_list_holder" style="display: table">
+
+        <% i=0 %>
+        <% i=i+1 %>
+        <% @products.each do |prod| %>
+
+            <% if i.divmod(3)[1] == 1 %>
+              <%= render inline: '<div style="display: table-row">' %>
+            <% end %>
+
+            <%= render "shared/productonce", e: prod %>
+
+            <% if (i.divmod(3)[1] == 0) || (i == @products.size) %>
+              <%= render inline: '</div>' %>
+            <% end %>
+
+            <% i=i+1 %>
+        <% end %>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<div id="peaceofshit"></div>
+<script>
+  $(document).ready(function() { $("#categ_main").css("background-color", "Green"); });
+
+  var name1 = $("#first_cat_name").text().trim();
+  var name2 = $("#prev_cat_name").text().trim();
+  var name3 = $("#current_cat_name").text().trim();
+
+  var selector1 = ".cat_point:contains("+name1+")";
+  var selector2 = ".cat_point:contains("+name2+")";
+  var selector3 = ".cat_point:contains("+name3+")";
+
+  setTimeout(Clicer, 100);
+  function Clicer() {
+    if (name1 != "") $(selector1).click();
+    if (name2 != "") $(selector2).click();
+    if (name3 != "") $(selector3).css({'color': 'Purple', 'font-weight': 'bold'});
+  }
+
+
+  //$(selector).parents().filter("ul").show();
+  //$('.cat_point :contains("Корма")').parent().parents().filter("ul").show(); //WORKED!!!
+</script>

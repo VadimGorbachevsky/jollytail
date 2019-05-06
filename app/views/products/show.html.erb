@@ -1,0 +1,74 @@
+<div class="Catalog" style="width: 100%; display: table;">
+  <div style="display: table-row">
+
+  <div style="display: table-cell; width: 330px; vertical-align: top;">
+    <div style="display: table; width: 330px;">
+      <div style="display: table-row;">
+      <div style="width: 10px; display: table-cell;"> </div>
+      <div style="width: 300px; display: table-cell; border: 1px solid Purple;">
+        <%= render partial: "shared/tree" %>
+      </div>
+      <div style="width: 20px; display: table-cell;"> </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: table-cell; vertical-align: top; width: 1000px;">
+      <div style="display: table; vertical-align: top; width: 1000px;">
+
+                <div style="display: table-row;  vertical-align: top; width: 1000px;">
+
+                    <div style="width: 302px; display: table-cell;  vertical-align: top;">
+                      <% if @product.image.attached? %>
+                        <div style="border: 1px solid purple; width: 302px;"><%= image_tag(url_for(@product.image), size: "300x300") %></div>
+                      <% else %>
+                        <div style="border: 1px solid purple; width: 302px;"><%= image_tag("default_foto.jpg", size: "300x300") %></div>
+                      <% end %>
+                    </div>
+
+                    <div style="display: table-cell; vertical-align: top; text-align: left; width: 600px;">
+                        <span style="font-size: 24px; color: blue; vertical-align: top; text-align: left;"><%= @product.name %></span>
+                        <br></br>
+                        <span style="font-size: 16px; color: Black; vertical-align: top; text-align: left;"><%= @product.description %></span>
+                        <br></br>
+                        <% @accia = Accia.find(@product.accia_id) %>
+                          <% @starttime = @accia.starttime %>
+                          <% @time = Time.now(); %>
+                          <% @endtime = @accia.endtime %>
+                        <% if (@time > @starttime) && (@time < @endtime) %>
+                            <span class="price" style="font-size: 20px; color: Red;">Цена по акции: <%= @product.action_price %> p.</span><br>
+                        <% else %>
+                            <span class="price" style="font-size: 20px; color: Purple;">Цена: <%= @product.price %> p.</span><br>
+                        <% end %>
+                    </div>
+
+                </div>
+
+                <div style="display: table-row">
+
+                  <div style="width: 300px; display: table-cell;"></div>
+
+                  <div style="width: 300px; display: table-cell;">
+                      <% if user_signed_in? %>
+                          <span style="font-size: 26px; color: Green;">
+                              <%= form_for Position.new, remote: true do |f| %>
+                                <span class="product_count_placer"><%= f.text_field :quantity, type: "number", value: 1, min: 0, max:  @product.productcount.count, :style => "width: 60px" %> шт.</span>
+                                <%= f.hidden_field :prod_id, :value =>  @product.id%>
+                                <%= f.submit "В корзину"%>
+                              <% end %>
+                          </span>
+                      <% else %>
+                          <%= button_tag(type: 'button') do %>
+                          <%= link_to "В корзину",  new_user_session_url %>
+                          <% end %>
+                      <% end %>
+                  </div>
+
+                </div>
+
+              </div>
+              </div>
+
+
+</div>
+</div>

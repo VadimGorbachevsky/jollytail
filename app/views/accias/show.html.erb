@@ -1,0 +1,42 @@
+<div class="Catalog" style="width: 100%; display: table;">
+  <div style="display: table-row;">
+
+    <div style="display: table-cell; width: 330px;">
+      <div style="display: table; width: 330px;">
+        <div style="display: table-row;">
+        <div style="width: 10px; display: table-cell;"> </div>
+        <div style="width: 300px; display: table-cell; border: 1px solid Purple;">
+          <%= render partial: "shared/tree" %>
+        </div>
+        <div style="width: 20px; display: table-cell;"> </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: table-cell;">
+        <h2 style="color: Blue; margin-bottom: 0px;"><%= @accia.name %></h2>
+        <div style="margin-bottom: 0px;"><%= @accia.description %></div>
+        <hr style="color: Green;">
+        <div class="product_list_holder" style="display: table">
+            <% i=0 %>
+            <% i=i+1 %>
+            <% @products.each do |prod| %>
+                  <% if i.divmod(3)[1] == 1 %>
+                    <%= render inline: '<div style="display: table-row">' %>
+                  <% end %>
+                  <%= render "shared/productonce", e: prod %>
+                  <% if (i.divmod(3)[1] == 0) || (i == @products.size) %>
+                    <%= render inline: '</div>' %>
+                  <% end %>
+                  <% i=i+1 %>
+            <% end %>
+          </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+        $("#acti_main").css("background-color", "Green");
+      });
+</script>

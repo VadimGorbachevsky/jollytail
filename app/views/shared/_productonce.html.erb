@@ -1,0 +1,42 @@
+<div class="product_onse_placer", style="display:table-cell; width: 300px; border: 1px solid #4b0082; text-align: center;">
+
+  <h2 style="margin-top: 5px; margin-bottom: 0px; color: Black; font-size: 18px;"><%= link_to e.name, product_path(e) %></h2>
+
+  <% if e.name.size < 40 %> <br style="margin-top: 0px; margin-bottom: 0px; color: Black; font-size: 18px;"> <% else %> <% end %>
+
+  <% if e.image.attached? %>
+      <%= image_tag(url_for(e.image), size: "150x150") %>
+  <% else %>
+      <%= image_tag("default_foto.jpg", size: "150x150") %>
+  <% end %>
+  <br>
+  <% @accia = Accia.find(e.accia_id) %>
+    <% @starttime = @accia.starttime %>
+    <% @time = Time.now(); %>
+    <% @endtime = @accia.endtime %>
+  <% if (@time > @starttime) && (@time < @endtime) %>
+      <span class="price" style="font-size: 20px; color: Red;">Цена по акции: <%= e.action_price %> p.</span><br>
+  <% else %>
+      <span class="price" style="font-size: 20px; color: Purple;"><%= e.price %> p.</span><br>
+  <% end %>
+
+
+  <% if e.productcount %>
+      <% if user_signed_in? %>
+            <span style="font-size: 26px; color: Green;">
+                <%= form_for Position.new, remote: true do |f| %>
+                <span class="product_count_placer"><%= f.text_field :quantity, type: "number", value: 1, min: 0, max: e.productcount.count, :style => "width: 60px" %> шт.</span>
+                <%= f.hidden_field :prod_id, :value => e.id%>
+                <%= f.submit "В корзину"%>
+              <% end %>
+            </span>
+      <% else %>
+          <%= button_tag(type: 'button') do %>
+          <%= link_to "В корзину",  new_user_session_url %>
+          <% end %>
+      <% end %>
+  <% else %>
+      <h2>Заказать</h2>
+  <% end %>
+
+</div>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <title>JollyTail</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+      .logo1 {
+        font-family: Bell MT, serif;
+        font-size: 64px;
+        margin-top: 0px;
+        vertical-align: top;
+        color: Blue;
+        font-weight: bold;
+      }
+      .logo2 {
+        font-family: Bell MT, serif;
+        font-size: 64px;
+        margin-top: 0px;
+        vertical-align: top;
+        color: #00ff00;
+        font-weight: bold;
+      }
+      hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 2px solid Green;
+        /*margin: 1em 0;*/
+        padding: 0;
+      }
+      .mainhead {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 24px;
+        background-color: #4b0082;
+        background-color: #4b0082f9;
+        margin: 0px;
+      }
+      a {
+        text-decoration: none !important;
+        color: inherit !important; /* Отменяем подчеркивание у ссылки */
+      }
+      .user_menu_head {
+        color: Green;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        vertical-align: top;
+        text-align: left;
+        width: 100%
+      }
+      .start_user_menu {
+        color: Green;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        vertical-align: top;
+        text-align: left;
+        width: 100%
+      }
+      .user_menu_body {
+        font-family: Arial, Helvetica, sans-serif;
+        color: Blue;
+        font-size: 12px;
+        vertical-align: top;
+        text-align: left;
+        margin: 0px;
+        width: 100%
+      }
+      .adress_table {
+        display: table-cell;
+        text-align: left;
+        font-size: 12px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        vertical-align: top;
+      }
+      .divider{
+        display: table-cell;
+        width: 1%;
+      }
+      .long_divider{
+        display: table-cell;
+        width: 5%;
+      }
+      .credo{
+        font-family: Bell MT, serif;
+        position: absolute;
+        margin-top: 78px;
+        margin-left: 300px;
+        font-weight: bold;
+        font-style: oblique;
+        font-size: 24px;
+        color: Blue;
+      }
+      li{
+        list-style-type: none;
+      }
+      img{
+        margin-top: 0px;
+      }
+      input[type=submit] {
+        padding:10px 15px !important;
+        margin-left: 5px !important;
+        background: Green !important;
+        border:0 none !important;
+        cursor: pointer !important;
+        -webkit-border-radius: 5px !important;
+        border-radius: 5px !important;
+      }
+      button {
+        padding:10px 15px !important;
+        font-size: 24px;
+        margin-left: 5px !important;
+        background: Green !important;
+        border:0 none !important;
+        cursor: pointer !important;
+        -webkit-border-radius: 5px !important;
+        border-radius: 5px !important;
+      }
+      button:hover {
+        background: Purple !important;
+      }
+      #page-container {
+        position: relative;
+        min-height: 100vh;
+      }
+      #content-wrap {
+        padding-bottom: 10rem;    /* Footer height */
+      }
+      #footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 2rem;            /* Footer height */
+      }
+
+      </style>
+    </head>
+
+  <body>
+    <div id="page-container">
+      <div id="content-wrap">
+  <div style="position: relative; top: 0;">
+  <div class="credo">Друзья ваших друзей</div>
+  <div style="position: absolute; margin-left: 72%; margin-top: 42.5px;"><%= image_tag "jolly_all.png", size: "200x100" %></div>
+  <div style="position: absolute; color: Purple; font-size: 20px; font-weight: bold; margin-top: 0px; margin-left: 115px;">Товары для животных</div>
+  <div style="display: table; vertical-align: middle">
+    <div style="display: table-row">
+
+        <div style="display: table-cell; vertical-align: middle; width: 8%;">
+          <%= link_to image_tag("JT_logo2.png", size: "110x110"), root_url %>
+        </div>
+
+        <div style="display: table-cell; width: 24%; text-align: left; vertical-align: middle;">
+          <span class="logo1">Jolly</span><span class="logo2">Tail</span>
+        </div>
+        <div class="long_divider"></div>
+        <div style="display: table-cell; width: 80px;">
+          <%= image_tag "jollydog.jpg", size: "73x110" %>
+
+        </div>
+        <div class="adress_table" style="width: 8%; font-weight: bold;">
+          Где нас найти:<br>
+          г. Екатеринбург<br>
+          Сулимова 42 <br>
+        </div>
+
+        <div class="divider"></div>
+        <div class="adress_table" style="width: 12%; font-weight: bold;">
+            Как с нами связаться:<br>
+            Телефон: +7-950-546-20-85<br>
+            e-mail: e-mail<br>
+            Viber: e-mail<br>
+            WhatsApp: e-mail<br>
+        </div>
+        <div class="divider"></div>
+        <div class="adress_table" style="width: 12%; font-weight: bold;">
+            Мы работаем:<br>
+            пн-вс: 10:00 до 21:00
+        </div>
+
+        <div class="long_divider"></div>
+        <div class="long_divider"></div>
+        <div class="divider"></div>
+        <div style="display: table-cell; height: 20px; vertical-align: top;">
+          <% if user_signed_in? %>
+            <span class="user_menu_head" style=""><%= current_user.name %></span>
+            <table class="user_menu_body" style="display: none; background-color: White;">
+              <tr><th><%= link_to "Личный кабинет",  user_path(current_user)  %></th></tr>
+              <tr><th><%= link_to "Корзина",  user_path(current_user, :param1 => "start") %><span id="cartcountid" style="color: Purple"><%= current_user.cart.positions ? " " + current_user.cart.positions.size.to_s : "" %></span></th></tr>
+              <tr><th><%= link_to "Выход",  destroy_user_session_path, method: :delete  %></th></tr>
+            </table>
+
+          <% else %>
+            <span class="start_user_menu" style="color: Blue;"><%= link_to("Вход",  new_user_session_path) %></span>
+            <span class="start_user_menu"><%= link_to("Регистрация",  new_user_registration_path) %> </span>
+          <% end %>
+        </div>
+
+      </div>
+  </div>
+
+
+  <div class="mainhead" style=" background-color: #a580a9; width: 100%; margin: 0px;">
+  <table style="text-align: center; width: 100%; padding: 0px;">
+    <tr style="margin: 0px; padding: 0px;">
+      <th id="categ_main" class="mainhead_point" style="padding: 0px; width: 8%; text-align: center;"><%= link_to("Каталог", categories_path) %></th>
+      <th id="acti_main" class="mainhead_point" style="padding: 0px; width: 8%; text-align: center;"><%= link_to("Акции", accias_url) %></th>
+      <th id="about_main" class="mainhead_point" style="padding: 0px; width: 8%; text-align: center;"><%= link_to("Контакты", credits_url) %></th>
+      <th id="logist_main" class="mainhead_point" style="padding: 0px; width: 17%; text-align: center;"><%= link_to("Доставка и оплата", delivery_url) %></th>
+      <th id="revi_main" class="mainhead_point" style="padding: 0px; width: 8%; text-align: center;"><%= link_to("Отзывы", reviews_path) %></th>
+      <th style="font-size: 16px; width: 100%; padding-right: 0px;">
+        <%= form_tag(products_url, method: :get)  do %>
+            <%= text_field_tag(:q, (params[:q] ? params[:q] :'Поиск...'), id: 'search')%><%= submit_tag("Поиск") %>
+        <% end %>
+      </th>
+    </tr>
+  </table>
+
+  </div>
+  </div>
+
+  <h1 stile="color: Green;" class="notice"><%= notice %></h1>
+  <h1 stile="color: Green;" class="alert"><%= alert %></h1>
+
+    <%= yield %>
+</div>
+
+    <footer id="footer" style=" background-color: #a580a9;">
+      <table>
+        <tr>
+          <th>
+            <span style="font-size: 16px;"> <%= link_to "Политика конфиденциальности", politic_url%></span>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <span style="">На сайте использованы изображения с ресурса:<a href=https://ru.pngtree.com>Графика от pngtree.com</a></span>
+          </th>
+        </tr>
+      </table>
+    </footer>
+</div>
+  </body>
+</html>
+
+<script>
+  $(document).ready(function(){
+      var i = false;
+      var buf_color = "";
+      var countcart = 0;
+      $(".product_onse_placer .new_position .product_count_placer").hide();
+      $('#search').one('click', function(e) { $(this).val(""); });
+      $(".user_menu_head").on({ mouseenter: function() {
+                                                        $(".user_menu_body").show();
+                                                        } });
+      $(".mainhead").on({ mouseenter: function() {
+                                                        $(".user_menu_body").hide();
+                                                 } });
+      $(".mainhead_point").on({ mouseenter: function() {
+                                                        buf_color = $(this).css("background-color");
+                                                        $(this).css("background-color", "Green");
+                                                        i = true;
+                                                       } });
+      $(".mainhead_point").on({ mouseleave: function() {
+                                                        if (i == true) { $(this).css("background-color", buf_color); }
+                                                        i = false;
+                                                       } });
+      $(".product_onse_placer").on({ mouseenter: function() {
+                                                              $(this).find(".new_position .product_count_placer").show();
+                                                            } });
+      $(".product_onse_placer").on({ mouseleave: function() {
+                                                              $(this).find(".new_position .product_count_placer").hide();
+                                                            } });
+  });
+</script>

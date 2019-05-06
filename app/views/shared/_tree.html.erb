@@ -1,0 +1,26 @@
+<h2>Каталог</h2>
+
+    <% Category.roots.each do |category| %>
+
+      <% if category.real %>
+
+        <% if category.children? == true %>
+          <span class="sub" style="font-size: 16px; cursor: pointer;"> > <span class="cat_point" style="color: Blue;"><%=link_to(category.name, category_path(category))%></span></span>
+          <br>
+          <ul style="display: none;"><%= render "shared/tree_adding", main_cat: category.children %></ul>
+        <% else %>
+          <span style="font-size: 16px; cursor: pointer; margin-left: 14px;"> <span class="cat_point" style="color: Black;"><%=link_to(category.name, category_path(category))%></span></span><br>
+        <% end %>
+
+      <% end %>
+
+    <% end %>
+
+<script>
+      $(document).ready(function() {
+          var $sidebarArrow = $('.sub');
+          $sidebarArrow.click(function() {
+              $(this).next().next().slideToggle();
+          });
+      });
+</script>

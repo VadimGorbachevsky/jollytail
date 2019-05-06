@@ -1,0 +1,21 @@
+<h1 style="color: Blue; margin-left: 10px;">Акции</h1>
+<table>
+  <% @i = 0 %>
+  <tr>
+    <% @accias.each do |current_accia| %>
+      <% if @i.divmod(3)[1] > 0 %>
+          <th><%= link_to image_tag(current_accia.image, size: "440x200", style: "border: 1px solid purple", onMouseover: "this.style='border: 2px solid blue';", onMouseout: "this.style='border: 1px solid purple';"), accia_url(current_accia) %></th>
+          <% @i = @i +1 %>
+      <% else %>
+          </tr> <tr> <th><%= link_to image_tag(current_accia.image, size: "440x200", style: "border: 1px solid purple", onMouseover: "this.style='border: 2px solid blue';", onMouseout: "this.style='border: 1px solid purple';"), accia_url(current_accia) %> </th>
+          <% @i = @i +1 %>
+      <% end %>
+    <% end %>
+  </tr>
+</table>
+
+<script>
+  $(document).ready(function() {
+        $("#acti_main").css("background-color", "Green");
+      });
+</script>

@@ -1,0 +1,18 @@
+<% main_cat.each do |category| %>
+
+      <% if category.children? == true %>
+
+          <li> <span class="sub" style="font-size: 14px; cursor: pointer;"> > <span class="cat_point" style="color: Green;"><%= link_to(category.name, category_path(category)) %> </span></span>
+            <br>
+          <ul style="font-size: 14px; display: none;">
+              <%= render "shared/tree_last", main_cat: category.children %>
+          </ul>
+
+          </li>
+
+
+         <% else %>
+             <li><span class="cat_point"><%= link_to(category.name, category_path(category)) %><span></li>
+         <% end %>
+
+<% end %>
